@@ -25,7 +25,6 @@ export const theme = createTheme({
     },
     h2: {
         fontFamily: 'Carrois Gothic SC',
-        color: '#daa034'
     }
   },
 });
