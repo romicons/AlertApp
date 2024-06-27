@@ -5,7 +5,7 @@ import { Button, Box, Typography } from "@mui/material";
 
 export const Footer = () => {
     return (
-        <Box sx={{backgroundColor:"#18171c", display: "flex", flexDirection: "column", justifyContent: "center", gap: 1, paddingBlock: 1, width: "100%", boxShadow: 3}}>
+        <Box sx={{backgroundColor:"#f9f7ff", display: "flex", flexDirection: "column", justifyContent: "center", gap: 1, paddingBlock: 1, width: "100%", boxShadow: 3}}>
             <Box sx={{display: "flex", flexDirection: "row", gap: 3, justifyContent: "center"}}>
                 <Button href="https://github.com/romicons" sx={{ fontSize: {xs:15, sm:25}}}>
                     <FaGithub />
@@ -17,7 +17,7 @@ export const Footer = () => {
                     <HiOutlineMail />
                 </Button>
             </Box>
-                <Typography variant="h2" sx= {{fontSize: {xs:20, sm:25}, textAlign: "center"}}> 
+                <Typography variant="h2" sx= {{fontSize: {xs:15, sm:20}, textAlign: "center"}}> 
                     © Romina Constantinoff - 2024. Todos los derechos reservados. 
                 </Typography>
         </Box>
