@@ -1,6 +1,6 @@
-import * as React from 'react';
+import { useState } from "react";
 
-import { Badge, IconButton } from "@mui/material";
+import { Badge } from "@mui/material";
 
 import { MdNotifications, MdNotificationsActive } from "react-icons/md";
 
@@ -14,18 +14,16 @@ function notificationsLabel(count) {
     return `${count} notifications`;
   }
   
-  export const NotificationsBtn = () => {
-    const [count, setCount] = React.useState(1);
-    const [invisible, setInvisible] = React.useState(false);
+  export const NotificationsCounter = () => {
+    const [count, setCount] = useState(1);
+    const [invisible, setInvisible] = useState(false);
     const handleBadgeVisibility = () => {
         setInvisible(!invisible);
     };
 
     return (
-      <IconButton aria-label={notificationsLabel(100)} sx= {{color: "#daa034"}}>
-        <Badge color="secondary" badgeContent={count} invisible={invisible}>
+        <Badge aria-label={notificationsLabel(100)} sx= {{color: "#daa034"}} color="secondary" badgeContent={count} invisible={invisible}>
             <MdNotifications />
         </Badge>
-      </IconButton>
     );
   }

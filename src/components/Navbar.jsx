@@ -1,6 +1,6 @@
 import { Typography, Badge, Box, IconButton } from "@mui/material"
 
-import { NotificationsBtn } from './NotificationsBtn'
+import { NotificationsMenu } from './NotificationsMenu'
 
 import AlertAppIcon from "../assets/AlertAppIcon.svg"
 
@@ -22,7 +22,7 @@ export const Navbar = () => {
                 <Typography>
                     ¡Bienvenido Extraño!
                 </Typography>
-                <NotificationsBtn />
+                <NotificationsMenu />
             </Box>
         </Box>
     )
