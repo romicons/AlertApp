@@ -9,6 +9,10 @@ import backgroundImage from './assets/flat-mountains.svg'
 
 function App() {
 
+  const [count, setCount] = useState(0);
+  const [notifications, setNotifications] = useState([]);
+  console.log(count)
+
   return (
     <>
       <GlobalStyles
@@ -36,8 +40,8 @@ function App() {
           flexGrow: 1
         }}
       >
-        <Navbar />
-        <MainContent/>
+        <Navbar setCount={setCount} count={count} notifications={notifications} setNotifications={setNotifications} />
+        <MainContent setCount={setCount} count={count} notifications={notifications} setNotifications={setNotifications} />
         <Footer />
       </Box>
     </>

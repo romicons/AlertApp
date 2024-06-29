@@ -1,27 +1,22 @@
-import { useState} from 'react';
+import { useState } from 'react';
 
-import { List, ListItemButton, ListItemText, MenuItem, Menu  } from "@mui/material";
+import { List, ListItemButton, ListItemText, MenuItem, Menu } from "@mui/material";
 
 import { NotificationsCounter } from './NotificationsCounter';
 
-const notifications = [
-  'Show some love to MUI',
-  'Show all notification content',
-  'Hide sensitive notification content',
-  'Hide all notification content',
-];
-
-export const NotificationsMenu = () => {
+export const NotificationsMenu = ({ count, setCount, notifications, setNotifications }) => {
   const [anchorEl, setAnchorEl] = useState(null);
-  const [selectedIndex, setSelectedIndex] = useState(1);
+  const [selectedIndex, setSelectedIndex] = useState(null);
   const open = Boolean(anchorEl);
+
   const handleClickListItem = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleMenuItemClick = (event, index) => {
+  const handleNotification = (event, index) => {
     setSelectedIndex(index);
     setAnchorEl(null);
+    setCount(count - 1)
   };
 
   const handleClose = () => {
@@ -43,10 +38,8 @@ export const NotificationsMenu = () => {
           aria-expanded={open ? 'true' : undefined}
           onClick={handleClickListItem}
         >
-          <ListItemText
-            primary="Notificaciones"
-          />
-          <NotificationsCounter />
+          <ListItemText primary="Notificaciones" />
+          <NotificationsCounter setCount={setCount} count={count} />
         </ListItemButton>
       </List>
       <Menu
@@ -59,16 +52,23 @@ export const NotificationsMenu = () => {
           role: 'listbox',
         }}
       >
-        {notifications.map((option, index) => (
-          <MenuItem
-            key={option}
-            disabled={index === 0}
-            selected={index === selectedIndex}
-            onClick={(event) => handleMenuItemClick(event, index)}
-          >
-            {option}
+        {notifications?.length > 0 ? (
+          notifications.map((notification, index) => (
+            <MenuItem sx={{display: 'flex', gap: 1, justifyContent: 'space-between'}}
+              key={notification.id}
+              selected={index === selectedIndex}
+              onClick={(event) => handleNotification(event, index)}
+            >
+              {notification.icon}
+              {notification.message}
+              {notification.button}
+            </MenuItem>
+          ))
+        ) : (
+          <MenuItem disabled>
+            No hay notificaciones para mostrar
           </MenuItem>
-        ))}
+        )}
       </Menu>
     </div>
   );

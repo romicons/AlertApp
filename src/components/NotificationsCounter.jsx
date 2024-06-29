@@ -2,21 +2,22 @@ import { useState } from "react";
 
 import { Badge } from "@mui/material";
 
-import { MdNotifications, MdNotificationsActive } from "react-icons/md";
-
-function notificationsLabel(count) {
-    if (count === 0) {
-      return 'no notifications';
-    }
-    if (count > 99) {
-      return 'more than 99 notifications';
-    }
-    return `${count} notifications`;
-  }
+import { MdNotifications } from "react-icons/md";
   
-  export const NotificationsCounter = () => {
-    const [count, setCount] = useState(1);
+  export const NotificationsCounter = ({setCount, count}) => {
+
     const [invisible, setInvisible] = useState(false);
+
+    const notificationsLabel = (count) => {
+        if (count === 0) {
+          return 'no notifications';
+        }
+        if (count > 99) {
+          return 'more than 99 notifications';
+        }
+        return `${count} notifications`;
+      }
+
     const handleBadgeVisibility = () => {
         setInvisible(!invisible);
     };

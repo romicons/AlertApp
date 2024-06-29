@@ -4,7 +4,7 @@ import { NotificationsMenu } from './NotificationsMenu'
 
 import AlertAppIcon from "../assets/AlertAppIcon.svg"
 
-export const Navbar = () => {
+export const Navbar = ({count, setCount, notifications, setNotifications}) => {
     return (
         <Box sx={ { display:"flex", justifyContent:"space-between", flexFlow: "row wrap", alignItems:"center", backgroundColor: "#f9f7ff", width:'100%', paddingInline: 2,  boxShadow: 3 } }>
             <Box sx={ { display:"flex", gap: 2, alignItems: "center"}}>
@@ -22,7 +22,7 @@ export const Navbar = () => {
                 <Typography>
                     ¡Bienvenido Extraño!
                 </Typography>
-                <NotificationsMenu />
+                <NotificationsMenu setCount={setCount} count={count} notifications={notifications} setNotifications={setNotifications}/>
             </Box>
         </Box>
     )
