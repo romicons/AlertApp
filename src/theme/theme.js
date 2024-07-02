@@ -1,6 +1,5 @@
 import { createTheme } from '@mui/material/styles';
 
-// Supports weights 200-700
 import '@fontsource-variable/yanone-kaffeesatz';
 
 import '@fontsource/carrois-gothic-sc';
@@ -13,9 +12,6 @@ export const theme = createTheme({
     secondary: {
       main: '#f9f7ff',
     },
-    tertiary: {
-        main: '#18171c'
-    }
   },
   typography: {
     fontFamily: 'Yanone Kaffeesatz Variable',

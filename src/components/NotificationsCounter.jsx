@@ -4,7 +4,7 @@ import { Badge } from "@mui/material";
 
 import { MdNotifications } from "react-icons/md";
   
-  export const NotificationsCounter = ({setCount, count}) => {
+  export const NotificationsCounter = ({count}) => {
 
     const [invisible, setInvisible] = useState(false);
 

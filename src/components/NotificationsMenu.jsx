@@ -10,12 +10,18 @@ export const NotificationsMenu = ({ count, setCount, notifications, setNotificat
 
   const handleClickListItem = (event) => {
     setAnchorEl(event.currentTarget);
-    /*map que actualice el estado asi me cambia el color del seen o no*/
   };
 
-  const handleNotification = (event, index) => {
+  const handleNotificationClick = (event, index) => {
+    const updatedNotifications = notifications.map((notification, idx) => {
+      if (idx === index && !notification.seen) {
+        setCount(count - 1);
+        return { ...notification, seen: true };
+      }
+      return notification;
+    });
+    setNotifications(updatedNotifications);
     setAnchorEl(null);
-    setCount(count - 1)
   };
 
   const handleClose = () => {
@@ -53,9 +59,15 @@ export const NotificationsMenu = ({ count, setCount, notifications, setNotificat
       >
         {notifications?.length > 0 ? (
           notifications.map((notification, index) => (
-            <MenuItem sx={{display: 'flex', gap: 1, justifyContent: 'space-between', backgroundColor: notification.seen? 'white' : '#f5f5c6' }}
+            <MenuItem 
+              sx={{
+                display: 'flex', 
+                gap: 1, 
+                justifyContent: 'space-between', 
+                backgroundColor: notification.seen ? 'white' : '#f5f5c6'
+              }}
               key={notification.id}
-              onClick={(event) => handleNotification(event, index)}
+              onClick={(event) => handleNotificationClick(event, index)}
             >
               {notification.icon}
               {notification.message}

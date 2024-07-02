@@ -12,6 +12,8 @@ function App() {
   const [count, setCount] = useState(0);
   const [notifications, setNotifications] = useState([]);
 
+  console.log(notifications)
+
   return (
     <>
       <GlobalStyles

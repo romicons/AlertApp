@@ -3,8 +3,7 @@ import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import { Box, Typography, Button } from "@mui/material";
-
-import { DeleteNotificationBtn } from './DeleteNotificationButton';
+import { DeleteNotificationBtn } from "./DeleteNotificationButton";
 
 import { BiSolidLike, BiSolidDislike } from "react-icons/bi";
 import { FaFire } from "react-icons/fa6";
@@ -25,12 +24,13 @@ export const NotificationsCreator = ({ setCount, count, notifications, setNotifi
     const [prr, setPrr] = useState(false);
 
     const createNotification = (message, icon, seen) => {
+        const id = uuidv4();
         const newNotification = {
             message: message,
             icon: icon,
             seen: seen,
-            id: uuidv4(),
-            button: <DeleteNotificationBtn id={uuidv4()} setNotifications={setNotifications} notifications={notifications} />
+            id: id,
+            button: <DeleteNotificationBtn id={id} setNotifications={setNotifications} notifications={notifications} />
         };
         setNotifications([...notifications, newNotification]);
     };
@@ -90,7 +90,7 @@ export const NotificationsCreator = ({ setCount, count, notifications, setNotifi
     };
 
     return (
-        <Box sx={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center", backgroundColor: "#f9f7ff", width: '75%', padding: 2, boxShadow: 3, gap: 2, borderRadius: 2 }}>
+        <Box sx={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center", backgroundColor: "#f9f7ff", width: '70%', padding: 2, boxShadow: 3, gap: 2, borderRadius: 2 }}>
             <Typography variant="h2" sx={{ textAlign: 'center', fontSize: 25 }}>
                 Pulsa un botón para comenzar
             </Typography>
