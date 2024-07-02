@@ -5,7 +5,7 @@ import { Navbar } from './components/Navbar'
 import { NotificationsCreator } from './components/NotificationsCreator'
 import { Footer } from './components/Footer'
 
-import backgroundImage from './assets/flat-mountains.svg'
+import backgroundImage from './assets/flat-mountains.png'
 
 function App() {
 
