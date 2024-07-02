@@ -2,12 +2,17 @@ import { useState } from 'react'
 import { GlobalStyles, Box } from '@mui/material'
 
 import { Navbar } from './components/Navbar'
-import { MainContent } from './components/MainContent'
+import { NotificationsCreator } from './components/NotificationsCreator'
 import { Footer } from './components/Footer'
 
 import backgroundImage from './assets/flat-mountains.svg'
 
 function App() {
+
+  const [count, setCount] = useState(0);
+  const [notifications, setNotifications] = useState([]);
+
+  console.log(notifications)
 
   return (
     <>
@@ -36,8 +41,8 @@ function App() {
           flexGrow: 1
         }}
       >
-        <Navbar />
-        <MainContent/>
+        <Navbar setCount={setCount} count={count} notifications={notifications} setNotifications={setNotifications} />
+        <NotificationsCreator setCount={setCount} count={count} notifications={notifications} setNotifications={setNotifications} />
         <Footer />
       </Box>
     </>
