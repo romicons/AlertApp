@@ -3,7 +3,6 @@ import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import { Box, Typography, Button } from "@mui/material";
-import { DeleteNotificationBtn } from "./DeleteNotificationButton";
 
 import { BiSolidLike, BiSolidDislike } from "react-icons/bi";
 import { FaFire } from "react-icons/fa6";
@@ -12,7 +11,7 @@ import { PiHandsClappingFill, PiFlowerTulipBold } from "react-icons/pi";
 import { TfiSpray } from "react-icons/tfi";
 import { GiLips } from "react-icons/gi";
 
-export const NotificationsCreator = ({ setCount, count, notifications, setNotifications }) => {
+export const NotificationsCreator = ({notifications, setNotifications }) => {
     const [liked, setLiked] = useState(false);
     const [fireUp, setOnFire] = useState(false);
     const [starred, setStars] = useState(false);
@@ -30,62 +29,52 @@ export const NotificationsCreator = ({ setCount, count, notifications, setNotifi
             icon: icon,
             seen: seen,
             id: id,
-            button: <DeleteNotificationBtn id={id} setNotifications={setNotifications} notifications={notifications} />
         };
         setNotifications([...notifications, newNotification]);
     };
 
     const sendLike = () => {
         setLiked(!liked);
-        setCount(count + 1);
         createNotification('Recibiste un like', <BiSolidLike />, false);
     };
 
     const sendFire = () => {
         setOnFire(!fireUp);
-        setCount(count + 1);
         createNotification('Recibiste un fueguito', <FaFire />, false);
     };
 
     const sendStars = () => {
         setStars(!starred);
-        setCount(count + 1);
         createNotification('Te enviaron estrellas', <FaStar />, false);
     };
 
     const sendDislike = () => {
         setDislike(!dislike);
-        setCount(count + 1);
         createNotification('Te dieron dislike', <BiSolidDislike />, false);
     };
 
     const sendApplauses = () => {
         setClapped(!clapped);
-        setCount(count + 1);
         createNotification('Fuiste aplaudido', <PiHandsClappingFill />, false);
     };
 
     const sendFlowers = () => {
         setFlowersSent(!flowersSent);
-        setCount(count + 1);
         createNotification('Recibiste flores', <PiFlowerTulipBold />, false);
     };
 
     const sendSpray = () => {
         setSpray(!spray);
-        setCount(count + 1);
         createNotification('Te echaron fly', <TfiSpray />, false);
     };
 
     const sendKiss = () => {
         setKissed(!kissed);
-        setCount(count + 1);
         createNotification('Recibiste un beso', <GiLips />, false);
     };
 
     const sendCat = () => {
         setPrr(!prr);
-        setCount(count + 1);
         createNotification('Un gatito te esta mirando', <FaCat />, false);
     };
 
