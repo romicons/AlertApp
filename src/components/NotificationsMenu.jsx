@@ -1,10 +1,15 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
-import { List, ListItemButton, ListItemText, MenuItem, Menu} from "@mui/material";
+import { Button, List, ListItemButton, ListItemIcon, ListItemText, MenuItem, Menu } from "@mui/material";
 
 import { MdDelete } from "react-icons/md";
 import { NotificationsCounter } from './NotificationsCounter';
-import {DeleteNotificationBtn} from './DeleteNotificationButton'
+
+import { BiSolidLike, BiSolidDislike } from "react-icons/bi";
+import { FaFire, FaStar, FaCat } from "react-icons/fa";
+import { PiHandsClappingFill, PiFlowerTulipBold } from "react-icons/pi";
+import { TfiSpray } from "react-icons/tfi";
+import { GiLips } from "react-icons/gi";
 
 export const NotificationsMenu = ({ count, setCount, notifications, setNotifications }) => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -26,10 +31,40 @@ export const NotificationsMenu = ({ count, setCount, notifications, setNotificat
     setAnchorEl(null);
   };
 
+  const renderIcon = (iconName) => {
+    switch (iconName) {
+      case 'BiSolidLike':
+        return <BiSolidLike />;
+      case 'BiSolidDislike':
+        return <BiSolidDislike />;
+      case 'FaFire':
+        return <FaFire />;
+      case 'FaStar':
+        return <FaStar />;
+      case 'FaCat':
+        return <FaCat />;
+      case 'PiHandsClappingFill':
+        return <PiHandsClappingFill />;
+      case 'PiFlowerTulipBold':
+        return <PiFlowerTulipBold />;
+      case 'TfiSpray':
+        return <TfiSpray />;
+      case 'GiLips':
+        return <GiLips />;
+      default:
+        return null;
+    }
+  };  
+
+  const deleteNotification = (id) => {
+    const updatedNotifications = notifications.filter(notification => notification.id !== id);
+    setNotifications(updatedNotifications);
+  };
+
   const deleteAllNotifications = () => {
     setNotifications([]);
     setCount(0);
-  }
+  };
 
   const handleClose = () => {
     setAnchorEl(null);
@@ -72,13 +107,19 @@ export const NotificationsMenu = ({ count, setCount, notifications, setNotificat
             </MenuItem>,
             ...notifications.map((notification, index) => (
               <MenuItem 
-                sx={{ display: 'flex', gap: 1, justifyContent: 'space-between', backgroundColor: notification.seen ? 'white' : '#f5f5c6' }}
+                sx={{ backgroundColor: notification.seen ? 'white' : '#f5f5c6' }}
                 key={notification.id}
                 onClick={(event) => handleNotificationClick(event, index)}
               >
-                {notification.icon}
-                {notification.message}
-                <DeleteNotificationBtn id={notification.id} notifications={notifications} setNotifications={setNotifications}/>
+                <ListItemIcon>
+                  {renderIcon(notification.icon)}
+                </ListItemIcon>
+                <ListItemText>
+                  {notification.message}
+                </ListItemText>
+                <Button sx={{ fontSize: 20, color: '#d90d0d', padding: 0 }} onClick={(e) => { e.stopPropagation(); deleteNotification(notification.id); }}>
+                  <MdDelete />
+                </Button>
               </MenuItem>
             ))
           ]
