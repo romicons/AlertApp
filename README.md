@@ -27,6 +27,16 @@
 <p> A través de un tablero de botones, el usuario puede acceder a diferentes notificaciones que se envian automáticamente al menú de notificaciones, donde los usuarios podrán leerlas, marcarlas como leídas y/o eliminarlas. Además, gracias a la implementación de Local Storage, las notificaciones se mantendrán, siempre y cuando la aplicación se abra en el mismo dispositivo.</p>
 
 <div align="center">
+  
+![Presentation](https://i.imgur.com/hjSUIMP.gif)
+
+<p align="center">Funcionalidades</i></p>
+  
+</div>
+
+<p align="center"><b>¡Prueba AlertApp hoy mismo y revive la nostalgia con un toque moderno!</b></p>
+
+<div align="center">
 
 <img src="https://i.imgur.com/9kfXeAJ.png" width=120px alt="romicons profile picture">
 
